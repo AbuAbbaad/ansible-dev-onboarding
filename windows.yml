@@ -1,5 +1,5 @@
 ---
-- hosts: Windows
+- hosts: windows
   roles:
     - common
     - git
