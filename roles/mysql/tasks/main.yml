@@ -1,0 +1,14 @@
+---
+  - name: Download MySQL
+    win_get_url:
+      url: "{{ DOWNLOAD_URL }}/{{ MYSQL_VERSION }}"
+      dest: "{{ DOWNLOAD_DIR }}\\mysql\\{{ MYSQL_VERSION}}"
+
+  - name: Install MySQL 5
+    script: scripts/Mysql_Install.bat
+
+  - name: Add MySQL to System PATH
+    script: scripts/AddPath.ps1 "%ProgramFiles%\MySQL\MySQL Server 5.5\bin" User
+    
+  - name: Create Sample PETCLINIC DB
+    raw: cmd.exe /c mysql --user=root --password=mysql -e "CREATE DATABASE PETCLINIC;"

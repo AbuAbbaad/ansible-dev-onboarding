@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - common
+    - git
+    - java
+    - tomcat
+    - mysql
+    - eclipse

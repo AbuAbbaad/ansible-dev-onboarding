@@ -1,0 +1,11 @@
+---
+  - name: Download JDK 7
+    win_get_url:
+      url: "{{ DOWNLOAD_URL }}/{{ JAVA_VERSION}}"
+      dest: "{{ DOWNLOAD_DIR }}\\java\\{{ JAVA_VERSION }}"
+
+  - name: Install JDK 7
+    script: scripts/Jdk.bat
+
+  - name: Add JDK 7 to System PATH
+    script: scripts/AddPath.ps1 "%JAVA_HOME%\bin" User

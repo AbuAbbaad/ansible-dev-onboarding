@@ -1,0 +1,21 @@
+---
+  - name: Install Tomcat Server
+    win_get_url: 
+      url: "{{ DOWNLOAD_URL }}/{{ TOMCAT_VERSION}}"
+      dest: "{{ DOWNLOAD_DIR }}\\tomcat\\{{ TOMCAT_VERSION }}"
+      force: no
+
+  - name: Unzip Tomcat
+    win_unzip:  
+      src: "{{ DOWNLOAD_DIR }}\\tomcat\\{{ TOMCAT_VERSION }}"
+      dest: "{{ ansible_env.USERPROFILE }}"
+      creates: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-7.0.62"
+
+  - name: set environment
+    win_environment:
+       state: present
+       name: CATALINA_HOME
+       value: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-7.0.62"
+       level: user
+
+  - include: connector.yml

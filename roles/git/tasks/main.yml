@@ -1,0 +1,15 @@
+---
+  - name: Download GIT for Windows 
+    win_get_url:
+      url: "{{ DOWNLOAD_URL }}/{{ GIT_VERSION }}"
+      dest: '{{ DOWNLOAD_DIR }}\\git\\{{ GIT_VERSION }}'
+      force: no
+      creates: '{{ DOWNLOAD_DIR}}\\git'
+
+  - name: Copy INF for GIT silent installation 
+    win_copy:
+      src: 'files/git.ini'
+      dest: '{{ DOWNLOAD_DIR }}\\git\\git.ini'
+
+  - name: Install GIT
+    script: scripts/Git.bat
