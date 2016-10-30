@@ -10,8 +10,9 @@
     - name: Enable Gather Facts
       setup:
     
-    roles:
-        - common
+    - include: roles.yml
+     #roles:
+     #   - common
         #- git
         #- java
         #- tomcat
