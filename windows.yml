@@ -1,18 +1,18 @@
 ---
-- hosts: all
+- hosts: Development
   gather_facts: false
   tasks:
     - name: Check for single host
-      fail: msg="Single host check failed."
+      fail: msg="Single host check failed, Please provide your host in Limit parameter of the Job Template"
       when: "{{ play_hosts|length }} != 1"
-    - debug: msg='I got executed!'
+    - debug: msg='Singe Host Check Passed!, I got executed!'
     
     - name: Enable Gather Facts
       setup:
-  #roles:
-  #  - common
-  #  - git
-  #  - java
-  #  - tomcat
-  #  - mysql
-  #  - eclipse
+  roles:
+    - common
+    - git
+    - java
+    - tomcat
+    - mysql
+    - eclipse
