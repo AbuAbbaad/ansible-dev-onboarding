@@ -5,6 +5,8 @@
       dest: '{{ DOWNLOAD_DIR }}\\git\\{{ GIT_VERSION }}'
       force: no
       creates: '{{ DOWNLOAD_DIR}}\\git'
+      
+  - debug: msg='Ansible facts {{ ansible_env.USERPROFILE }} available in other roles'
 
   - name: Copy INF for GIT silent installation 
     win_copy:
