@@ -21,4 +21,6 @@ if ($process.ExitCode -eq 0){
 }
 else {
     Write-Host "Installer exit code  $($process.ExitCode) for file $($eclipsePath)"
+	Write-Host "Exited with code: $($process_config.ExitCode)"
 }
+exit $($process_config.ExitCode)

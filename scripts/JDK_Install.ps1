@@ -38,6 +38,9 @@ if ($process.ExitCode -eq 0){
 }
 else {
     Write-Host "Installer exit code  $($process.ExitCode) for file  $($msifile)"
+	Write-Host "Exited with code: $($process_config.ExitCode)"
 }
+exit $($process_config.ExitCode)
+
 
 #TODO: Add to Playbook win_environment setx JAVA_HOME "C:\Program Files\Java\jdk1.7.0_79"
