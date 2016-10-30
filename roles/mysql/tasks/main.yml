@@ -12,6 +12,7 @@
   
   - name: Configure MySQL Instance
     script: scripts/MySQL_Configure.ps1
+    ignore_errors: True
     
   - name: Add MySQL to System PATH
     script: scripts/AddPath.ps1 "%ProgramFiles%\MySQL\MySQL Server 5.5\bin" User
@@ -19,3 +20,4 @@
   - name: Create Sample PETCLINIC DB
     script: cmd.exe /c mysql --user=root --password=mysql -e "CREATE DATABASE PETCLINIC;"
     register: dbout
+    ignore_errors: True
