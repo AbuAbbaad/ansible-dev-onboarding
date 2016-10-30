@@ -24,7 +24,7 @@ $arguments = @(
 	)
 
 Write-Host "Installing $msiFile....."
-$process = Start-Process -FilePath msiexec.exe -ArgumentList $arguments -PassThru -Wait
+$process = Start-Process -verb RunAs -FilePath msiexec.exe -ArgumentList $arguments -PassThru -Wait
 if ($process.ExitCode -eq 0){
     Write-Host "$msiFile has been successfully installed"
 }
@@ -34,7 +34,7 @@ else {
 Exit $($process.ExitCode)
 
 Write-Host "Confuring MySQL Instance....."
-$process_config = Start-Process -FilePath "$env:ProgramFiles\MySQL\MySQL Server 5.5\bin\mysqlinstanceconfig.exe" -ArgumentList "-i -q ServiceName=MySQL RootPassword=mysql Port=3306 Charset=utf8 /l `"$logPath`"" -PassThru -Wait
+$process_config = Start-Process -verb RunAs -FilePath "$env:ProgramFiles\MySQL\MySQL Server 5.5\bin\mysqlinstanceconfig.exe" -ArgumentList "-i -q ServiceName=MySQL RootPassword=mysql Port=3306 Charset=utf8 /l `"$logPath`"" -PassThru -Wait
 
 if ($process_config.ExitCode -eq 0){
     Write-Host "Confuring MySQL Instance Successfull"

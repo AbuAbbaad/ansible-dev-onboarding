@@ -32,15 +32,14 @@ $arguments = @(
 Write-Host "Installing $msiFile....."
 #start /wait C:\Software\tools\downloads\java\jdk-7u79-windows-x64.exe /s INSTALLDIR="C:\Program Files\Java\jdk1.7.0_79" REBOOT=Suppress ADDLOCAL=ToolsFeature,SourceFeature AUTOUPDATE=0 SYSTRAY=0 /L C:\Software\tools\jdk1.7.0_79.log
 
-$process = Start-Process -FilePath $msiFile -ArgumentList $arguments -PassThru -Wait
+$process = Start-Process -verb RunAs -FilePath $msiFile -ArgumentList $arguments -PassThru -Wait
 if ($process.ExitCode -eq 0){
     Write-Host "$msiFile has been successfully installed"
 }
 else {
     Write-Host "Installer exit code  $($process.ExitCode) for file  $($msifile)"
-	Write-Host "Exited with code: $($process_config.ExitCode)"
 }
-exit $($process_config.ExitCode)
+Exit $($process.ExitCode)
 
 
 #TODO: Add to Playbook win_environment setx JAVA_HOME "C:\Program Files\Java\jdk1.7.0_79"
