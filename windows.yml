@@ -3,7 +3,7 @@
   tasks:
     - name: Check for single host
       fail: msg="Single host check failed."
-      when: "{{ play_hosts|length }} != 1"
+      when: "{{ ansible_play_batch|length }} != 1"
     - debug: msg='I got executed!'
   roles:
     - common
