@@ -3,10 +3,10 @@
   gather_facts: false
 
   roles:
-    #- precheck
+    - precheck
     - common
-    #- git
-    #- java
-    #- tomcat
+    - git
+    - java
+    - tomcat
     - mysql
     - eclipse
