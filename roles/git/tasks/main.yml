@@ -14,4 +14,4 @@
       dest: '{{ DOWNLOAD_DIR }}\\git\\git.ini'
 
   - name: Install GIT
-    script: scripts/Git.bat
+    script: scripts/Git_Install.ps1
