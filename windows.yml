@@ -4,9 +4,9 @@
 
   roles:
     - precheck
-    #- common
-    #- git
-    #- java
-    #- tomcat
+    - common
+    - git
+    - java
+    - tomcat
     - mysql
     - eclipse
