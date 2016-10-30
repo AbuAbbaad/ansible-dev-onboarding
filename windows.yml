@@ -1,7 +1,8 @@
 ---
 - hosts: _Development_ 
   gather_facts: false
-  
+
+tasks:
   - name: Enable Gather Facts
     setup:
     
