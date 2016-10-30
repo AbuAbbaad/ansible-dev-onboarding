@@ -1,5 +1,5 @@
 ---
-- hosts: _Development_
+- hosts: _DEVELOPMENT_ 
   gather_facts: false
   tasks:
     - name: Check for single host
