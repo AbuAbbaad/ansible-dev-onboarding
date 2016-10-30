@@ -12,8 +12,8 @@
     
     roles:
         - common
-        - git
-        - java
-        - tomcat
-        - mysql
-        - eclipse
+        #- git
+        #- java
+        #- tomcat
+        #- mysql
+        #- eclipse
