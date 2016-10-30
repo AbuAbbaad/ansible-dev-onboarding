@@ -1,8 +1,0 @@
----
-     roles:
-       - common
-       - git
-       - java
-       - tomcat
-       - mysql
-       - eclipse
