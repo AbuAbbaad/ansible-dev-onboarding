@@ -7,10 +7,10 @@
        setup:
       
      - name: Deploy the software application stack 
-       roles:
-         - common
-         - git
-         - java
-         - tomcat
-         - mysql
-         - eclipse
+         roles:
+           - common
+           - git
+           - java
+           - tomcat
+           - mysql
+           - eclipse
