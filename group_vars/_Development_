@@ -1,4 +1,4 @@
 ---
-DOWNLOAD_URL: "C:\Users\Amina\Downloads"
-DOWNLOAD_DIR: "C:\\Software\\tools\\downloads"
-INSTALL_DIR: "C:\\Software\\tools\\install"
+  DOWNLOAD_URL: "C:\\Users\\Amina\\Downloads"
+  DOWNLOAD_DIR: "C:\\Software\\tools\\downloads"
+  INSTALL_DIR: "C:\\Software\\tools\\install"
