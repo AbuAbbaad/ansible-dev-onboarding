@@ -8,7 +8,7 @@
     script: scripts/MySQL_Install.ps1 '{{ DOWNLOAD_DIR }}\mysql\{{ MYSQL_VERSION}}' '{{ DOWNLOAD_DIR }}\mysql\MySQL_Install.log'
     register: available
 
-  - debug: msg="MySQL Install status {{ available.rc }}"
+  - debug: msg="MySQL Install status {{ available }}"
   
   - name: Configure MySQL Instance
     script: scripts/MySQL_Configure.ps1
