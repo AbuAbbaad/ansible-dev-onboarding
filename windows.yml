@@ -9,10 +9,11 @@
     
     - name: Enable Gather Facts
       setup:
-  roles:
-    - common
-    - git
-    - java
-    - tomcat
-    - mysql
-    - eclipse
+    
+    roles:
+        - common
+        - git
+        - java
+        - tomcat
+        - mysql
+        - eclipse
