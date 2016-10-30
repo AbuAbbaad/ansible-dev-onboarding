@@ -8,6 +8,8 @@
     script: scripts/MySQL_Install.ps1 '{{ DOWNLOAD_DIR }}\mysql\{{ MYSQL_VERSION}}' '{{ DOWNLOAD_DIR }}\mysql\MySQL_Install.log'
     register: available
 
+  - debug: msg="MySQL Install status {{ available.rc }}"
+  
   - name: Configure MySQL Instance
     win_command: 'Start-Process -verb RunAs -FilePath \"$env:ProgramFiles\MySQL\MySQL Server 5.5\bin\mysqlinstanceconfig.exe" -ArgumentList "-i -q ServiceName=MySQL RootPassword=mysql Port=3306 Charset=utf8\" -PassThru -Wait'
     
