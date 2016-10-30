@@ -12,13 +12,10 @@
       creates: "{{ ansible_env.USERPROFILE }}\\eclipse"
       
   - name: Installing Eclipse m2e-egit and Groovy related plugins
-    script: scripts/eclipse_plugins.bat
-    
-  - name: Create Eclipse desktop shortcut
-    script: scripts/CreateEclipseDesktopShortcut.ps1    
-
-  - name: Setup Eclipse Custom Workspace Settings
-    include: workspace.yml
+    script: scripts/EclipsePlugins_Install.ps1
+  
+  #- name: Setup Eclipse Custom Workspace Settings
+  #  include: workspace.yml
 
   - name: Create Eclipse desktop shortcut
     script: scripts/CreateEclipseDesktopShortcut.ps1    
