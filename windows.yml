@@ -6,7 +6,7 @@
     - precheck
     - common
     - git
-    - java
-    - tomcat
-    - mysql
-    - eclipse
+    #- java
+    #- tomcat
+    #- mysql
+    #- eclipse
