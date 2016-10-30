@@ -5,10 +5,10 @@
       fail: msg="Single host check failed."
       when: "{{ ansible_play_batch|length }} != 1"
     - debug: msg='I got executed!'
-  roles:
-    - common
-    - git
-    - java
-    - tomcat
-    - mysql
-    - eclipse
+  #roles:
+  #  - common
+  #  - git
+  #  - java
+  #  - tomcat
+  #  - mysql
+  #  - eclipse
