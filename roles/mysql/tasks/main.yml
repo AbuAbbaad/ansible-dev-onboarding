@@ -12,3 +12,4 @@
     
   - name: Create Sample PETCLINIC DB
     script: cmd.exe /c mysql --user=root --password=mysql -e "CREATE DATABASE PETCLINIC;"
+    register: dbout
