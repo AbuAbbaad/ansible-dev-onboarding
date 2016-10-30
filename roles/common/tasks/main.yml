@@ -5,9 +5,9 @@
   #
   #- debug: msg='Singe Host Check Passed!, I got executed!'
     
-  #- name: Enable Gather Facts
-  #  setup:
-  #  
+  - name: Enable Gather Facts
+    setup:
+    
   - win_file: path={{ item }} state=directory
     with_items:
       - "{{ DOWNLOAD_DIR }}\\eclipse" 
@@ -15,7 +15,6 @@
       - "{{ DOWNLOAD_DIR }}\\tomcat"
       - "{{ DOWNLOAD_DIR }}\\mysql"
       - "{{ DOWNLOAD_DIR }}\\java"
-
 
   - name: Create m2 directroy if not present
     win_file:
