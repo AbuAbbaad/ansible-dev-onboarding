@@ -28,12 +28,11 @@ $arguments = @(
 Write-Host "Installing $msiFile....."
 #start /wait C:\Software\tools\downloads\git\Git-2.10.1-64-bit.exe /SILENT /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh" /LOADINF="C:\Software\tools\downloads\git\git.ini" /L C:\Software\tools\git_install.log
 
-$process = Start-Process -FilePath $msiFile -ArgumentList $arguments -PassThru -Wait
+$process = Start-Process -verb RunAs -FilePath $msiFile -ArgumentList $arguments -PassThru -Wait
 if ($process.ExitCode -eq 0){
     Write-Host "$msiFile has been successfully installed"
 }
 else {
     Write-Host "Installer exit code  $($process.ExitCode) for file  $($msifile)"
-	Write-Host "Exited with code: $($process_config.ExitCode)"
 }
-exit $($process_config.ExitCode)
+Exit $($process.ExitCode)
