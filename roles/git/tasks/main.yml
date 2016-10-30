@@ -1,17 +1,17 @@
 ---
   - name: Download GIT for Windows 
     win_get_url:
-      url: "{{ DOWNLOAD_URL }}/{{ GIT_VERSION }}"
-      dest: "{{ DOWNLOAD_DIR }}\\git\\{{ GIT_VERSION }}"
+      url: '{{ DOWNLOAD_URL }}/{{ GIT_VERSION }}'
+      dest: '{{ DOWNLOAD_DIR }}\git\{{ GIT_VERSION }}'
       force: no
-      creates: "{{ DOWNLOAD_DIR}}\\git"
+      creates: '{{ DOWNLOAD_DIR}}\git'
       
   - debug: msg='Ansible facts {{ ansible_env.USERPROFILE }} available in other roles'
 
   - name: Copy INF for GIT silent installation 
     win_copy:
-      src: "files/git.ini"
-      dest: "{{ DOWNLOAD_DIR }}\\git\\git.ini"
+      src: 'files/git.ini'
+      dest: '{{ DOWNLOAD_DIR }}\git\git.ini'
 
   - name: Install GIT
-    script: scripts/Git_Install.ps1 "{{ DOWNLOAD_DIR }}\\git\\{{ GIT_VERSION }}" "{{ DOWNLOAD_DIR }}\\git\\git.ini" "{{ DOWNLOAD_DIR }}\\git\\Git_Install.log"
+    script: scripts/Git_Install.ps1 '{{ DOWNLOAD_DIR }}\git\{{ GIT_VERSION }}' '{{ DOWNLOAD_DIR }}\git\git.ini' '{{ DOWNLOAD_DIR }}\git\Git_Install.log'

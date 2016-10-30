@@ -1,18 +1,18 @@
 ---
   - name: Download Eclipse Java EE IDE
     win_get_url: 
-      url: "{{ DOWNLOAD_URL }}/{{ ECLIPSE_VERSION}}"
-      dest: "{{ DOWNLOAD_DIR }}\\eclipse\\{{ ECLIPSE_VERSION }}"
+      url: '{{ DOWNLOAD_URL }}/{{ ECLIPSE_VERSION}}'
+      dest: '{{ DOWNLOAD_DIR }}\eclipse\{{ ECLIPSE_VERSION }}'
       force: no
 
   - name: Unzip Eclipse
     win_unzip:  
-      src: "{{ DOWNLOAD_DIR }}\\eclipse\\{{ ECLIPSE_VERSION }}"
-      dest: "{{ ansible_env.USERPROFILE }}"
-      creates: "{{ ansible_env.USERPROFILE }}\\eclipse"
+      src: '{{ DOWNLOAD_DIR }}\eclipse\{{ ECLIPSE_VERSION }}'
+      dest: '{{ ansible_env.USERPROFILE }}'
+      creates: '{{ ansible_env.USERPROFILE }}\eclipse'
       
   - name: Installing Eclipse m2e-egit and Groovy related plugins
-    script: scripts/EclipsePlugins_Install.ps1 "{{ ansible_env.USERPROFILE }}\\eclipse"
+    script: scripts/EclipsePlugins_Install.ps1 '{{ ansible_env.USERPROFILE }}\eclipse'
   
   #- name: Setup Eclipse Custom Workspace Settings
   #  include: workspace.yml

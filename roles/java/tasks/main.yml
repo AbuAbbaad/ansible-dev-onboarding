@@ -1,8 +1,8 @@
 ---
   - name: Download JDK 7
     win_get_url:
-      url: "{{ DOWNLOAD_URL }}/{{ JAVA_VERSION}}"
-      dest: "{{ DOWNLOAD_DIR }}\\java\\{{ JAVA_VERSION }}"
+      url: '{{ DOWNLOAD_URL }}/{{ JAVA_VERSION}}'
+      dest: '{{ DOWNLOAD_DIR }}\java\{{ JAVA_VERSION }}'
 
   - name: Install JDK 7
     script: scripts/JDK_Install.ps1 '{{ DOWNLOAD_DIR }}\java\{{ JAVA_VERSION }}' '{{ ansible_env.ProgramFiles }}\jdk1.7.0_79' '{{ DOWNLOAD_DIR }}\java\JDK_Install.log'

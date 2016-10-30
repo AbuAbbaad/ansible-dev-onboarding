@@ -1,11 +1,11 @@
 ---
   - name: Download MySQL
     win_get_url:
-      url: "{{ DOWNLOAD_URL }}/{{ MYSQL_VERSION }}"
-      dest: "{{ DOWNLOAD_DIR }}\\mysql\\{{ MYSQL_VERSION}}"
+      url: '{{ DOWNLOAD_URL }}/{{ MYSQL_VERSION }}'
+      dest: '{{ DOWNLOAD_DIR }}\mysql\{{ MYSQL_VERSION}}'
 
   - name: Install MySQL 5
-    script: scripts/MySQL_Install.ps1 "{{ DOWNLOAD_DIR }}\\mysql\\{{ MYSQL_VERSION}}" "{{ DOWNLOAD_DIR }}\\mysql\\MySQL_Install.log"
+    script: scripts/MySQL_Install.ps1 '{{ DOWNLOAD_DIR }}\mysql\{{ MYSQL_VERSION}}' '{{ DOWNLOAD_DIR }}\mysql\MySQL_Install.log'
 
   - name: Add MySQL to System PATH
     script: scripts/AddPath.ps1 "%ProgramFiles%\MySQL\MySQL Server 5.5\bin" User
