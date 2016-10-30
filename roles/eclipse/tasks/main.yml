@@ -12,7 +12,7 @@
       creates: "{{ ansible_env.USERPROFILE }}\\eclipse"
       
   - name: Installing Eclipse m2e-egit and Groovy related plugins
-    script: scripts/EclipsePlugins_Install.ps1
+    script: scripts/EclipsePlugins_Install.ps1 "{{ ansible_env.USERPROFILE }}\\eclipse"
   
   #- name: Setup Eclipse Custom Workspace Settings
   #  include: workspace.yml
