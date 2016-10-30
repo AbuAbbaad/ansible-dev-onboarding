@@ -1,7 +1,7 @@
 ---
 - hosts: _Development_ 
   gather_facts: false
-  tasks:
+  pre-tasks:
     - name: Check for single host
       fail: msg="Single host check failed, Please provide your host in Limit parameter of the Job Template"
       when: "{{ play_hosts|length }} != 1"
@@ -9,12 +9,11 @@
     
     - name: Enable Gather Facts
       setup:
-    
-    - include: roles.yml
-     #roles:
-     #   - common
-        #- git
-        #- java
-        #- tomcat
-        #- mysql
-        #- eclipse
+
+  roles:
+     - common
+     - git
+     - java
+     - tomcat
+     - mysql
+     - eclipse
