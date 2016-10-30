@@ -1,1 +1,4 @@
-
+---
+  DOWNLOAD_URL: "http://10.242.138.102/downloads"
+  DOWNLOAD_DIR: "C:\\Software\\tools\\downloads"
+  INSTALL_DIR: "C:\\Software\\tools\\install"
