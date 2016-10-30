@@ -39,4 +39,6 @@ if ($process_config.ExitCode -eq 0){
 }
 else {
     Write-Host "Confuring MySQL Instance Failed:  $($process_config.ExitCode)"
+	Write-Host "Exited with code: $($process_config.ExitCode)"
 }
+exit $($process_config.ExitCode)
