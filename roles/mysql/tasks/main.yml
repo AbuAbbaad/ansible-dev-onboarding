@@ -11,7 +11,7 @@
   - debug: msg="MySQL Install status {{ available.rc }}"
   
   - name: Configure MySQL Instance
-    win_command: 'Start-Process -verb RunAs -FilePath \"$env:ProgramFiles\MySQL\MySQL Server 5.5\bin\mysqlinstanceconfig.exe" -ArgumentList "-i -q ServiceName=MySQL RootPassword=mysql Port=3306 Charset=utf8\" -PassThru -Wait'
+    script: scripts/MySQL_Configure.ps1
     
   - name: Add MySQL to System PATH
     script: scripts/AddPath.ps1 "%ProgramFiles%\MySQL\MySQL Server 5.5\bin" User
