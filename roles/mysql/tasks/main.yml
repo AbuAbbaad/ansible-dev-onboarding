@@ -11,4 +11,4 @@
     script: scripts/AddPath.ps1 "%ProgramFiles%\MySQL\MySQL Server 5.5\bin" User
     
   - name: Create Sample PETCLINIC DB
-    raw: cmd.exe /c mysql --user=root --password=mysql -e "CREATE DATABASE PETCLINIC;"
+    script: cmd.exe /c mysql --user=root --password=mysql -e "CREATE DATABASE PETCLINIC;"
