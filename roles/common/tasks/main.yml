@@ -1,13 +1,13 @@
 ---
-  - name: Check for single host
-    fail: msg="Single host check failed, Please provide your host in Limit parameter of the Job Template"
-    when: "{{ play_hosts|length }} != 1"
-  
-  - debug: msg='Singe Host Check Passed!, I got executed!'
+  #- name: Check for single host
+  #  fail: msg="Single host check failed, Please provide your host in Limit parameter of the Job Template"
+  #  when: "{{ play_hosts|length }} != 1"
+  #
+  #- debug: msg='Singe Host Check Passed!, I got executed!'
     
-  - name: Enable Gather Facts
-    setup:
-    
+  #- name: Enable Gather Facts
+  #  setup:
+  #  
   - win_file: path={{ item }} state=directory
     with_items:
       - "{{ DOWNLOAD_DIR }}\\eclipse" 
