@@ -5,7 +5,7 @@
       dest: "{{ DOWNLOAD_DIR }}\\java\\{{ JAVA_VERSION }}"
 
   - name: Install JDK 7
-    script: scripts/JDK_Install.ps1 "{{ DOWNLOAD_DIR }}\\java\\{{ JAVA_VERSION }}" "{{ DOWNLOAD_DIR }}\\java\\JDK_Install.log"
+    script: scripts/JDK_Install.ps1 '{{ DOWNLOAD_DIR }}\{{ ansible_env.ProgramFiles }}\jdk1.7.0_79' '{{ DOWNLOAD_DIR }}\java\JDK_Install.log'
 
   - name: Add JDK 7 to System PATH
     script: scripts/AddPath.ps1 "%JAVA_HOME%\bin" User
