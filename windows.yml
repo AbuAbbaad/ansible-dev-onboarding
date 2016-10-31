@@ -4,7 +4,7 @@
 
   roles:
     - precheck
-    #- common
+    - common
     - git
     #- java
     #- tomcat

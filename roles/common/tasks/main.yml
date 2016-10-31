@@ -8,20 +8,30 @@
   - name: Enable Gather Facts
     setup:
     
-  - win_file: path={{ item }} state=directory
+  - name: Create Staging directory for required software stack
+    win_file: path={{ item }} state=directory
     with_items:
       - '{{ DOWNLOAD_DIR }}\eclipse' 
       - '{{ DOWNLOAD_DIR }}\git'
       - '{{ DOWNLOAD_DIR }}\tomcat'
       - '{{ DOWNLOAD_DIR }}\mysql'
       - '{{ DOWNLOAD_DIR }}\java'
+      
+  - name: Check if m2 already exists
+    win_stat:
+      path: '{{ ansible_env.USERPROFILE }}\.m2\settings.xml'
+      register: m2SettingsFileStat
 
+  - debug: msg='m2 Setting.xml already exists in {{ansible_env.USERPROFILE}}\.m2 path so doing nothing'
+  
   - name: Create m2 directroy if not present
     win_file:
       path: '{{ ansible_env.USERPROFILE }}\.m2'
       state: directory
+    when: m2SettingsFileStat.stat.exists
 
   - name: Copy maven settings
     win_copy:
       src: 'files/settings.xml'
       dest: '{{ ansible_env.USERPROFILE }}\.m2\settings.xml'
+    when: m2SettingsFileStat.stat.exists  
