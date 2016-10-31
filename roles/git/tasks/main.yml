@@ -1,8 +1,8 @@
 ---
   - name: Download GIT for Windows 
     win_get_url:
-      url: '{{ DOWNLOAD_URL }}/{{ GIT_VERSION }}'
-      dest: '{{ DOWNLOAD_DIR }}\git\{{ GIT_VERSION }}'
+      url: '{{ DOWNLOAD_URL }}/{{ GIT_EXE_FILE }}'
+      dest: '{{ DOWNLOAD_DIR }}\git\{{ GIT_EXE_FILE }}'
       force: no
       creates: '{{ DOWNLOAD_DIR}}\git'
       
@@ -12,6 +12,14 @@
     win_copy:
       src: 'files/git.ini'
       dest: '{{ DOWNLOAD_DIR }}\git\git.ini'
-
+      
+  - name: Check if Git Already Installed
+    win_stat:
+      path: '{{ ansible_env.ProgramFiles }}\{{ GIT_NAME }}\{{ GIT_NAME }}.exe'
+      register: GitInstallStatus
+   
+  - debug: msg='Git Installation status: {{ GitInstallStatus }}'
+      
   - name: Install GIT
-    script: scripts/Git_Install.ps1 '{{ DOWNLOAD_DIR }}\git\{{ GIT_VERSION }}' '{{ DOWNLOAD_DIR }}\git\git.ini' '{{ DOWNLOAD_DIR }}\git\Git_Install.log'
+    script: scripts/Git_Install.ps1 '{{ DOWNLOAD_DIR }}\git\{{ GIT_EXE_FILE }}' '{{ DOWNLOAD_DIR }}\git\git.ini' '{{ DOWNLOAD_DIR }}\git\Git_Install.log'
+    when: GitInstallStatus.stat.exists
