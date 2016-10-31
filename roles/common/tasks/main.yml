@@ -1,10 +1,4 @@
 ---
-  #- name: Check for single host
-  #  fail: msg="Single host check failed, Please provide your host in Limit parameter of the Job Template"
-  #  when: "{{ play_hosts|length }} != 1"
-  #
-  #- debug: msg='Singe Host Check Passed!, I got executed!'
-    
   - name: Enable Gather Facts
     setup:
     
@@ -22,10 +16,6 @@
       path: '{{ ansible_env.USERPROFILE }}\.m2\settings.xml'
     register: m2SettingsFileStat
 
-  - debug: msg='m2 Setting.xml already exists in {{ansible_env.USERPROFILE}}\.m2 path so doing nothing'
-  
-  - debug: msg='File status {{ m2SettingsFileStat }}'
-  
   - name: Create m2 directroy if not present
     win_file:
       path: '{{ ansible_env.USERPROFILE }}\.m2'
