@@ -25,7 +25,7 @@
        name: CATALINA_HOME
        value: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}'
        level: user
-    when: not UnzipTomcat.skipped
+    when: UnzipTomcat.skipped is not defined
 
   - include: connector.yml
-    when: not UnzipTomcat.skipped
+    when: UnzipTomcat.skipped is not defined

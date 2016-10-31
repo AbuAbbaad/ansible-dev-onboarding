@@ -17,4 +17,4 @@
       src: '{{ DOWNLOAD_DIR }}\eclipse\{{ WORKSPACE_FILE }}'
       dest: '{{ ansible_env.USERPROFILE }}'
       creates: '{{ ansible_env.USERPROFILE }}\workspace'
-    when: not UnzipWorkspace.skipped
+    when: UnzipWorkspace.skipped is not defined

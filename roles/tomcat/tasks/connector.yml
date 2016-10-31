@@ -3,7 +3,7 @@
     win_get_url:
       url: '{{ DOWNLOAD_URL }}/{{ TOMCAT_MYSQL_CONNECTOR }}'
       dest: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}\lib\{{ TOMCAT_MYSQL_CONNECTOR }}'
-    when: not UnzipTomcat.skipped
+    when: UnzipTomcat.skipped is not defined
 
   - name: Set CLASSPATH to MySQL JConnector
     win_environment:
@@ -11,4 +11,4 @@
       name: CLASSPATH
       value: '.;%CATALINA_HOME%\lib'
       level: user
-    when: not UnzipTomcat.skipped
+    when: UnzipTomcat.skipped is not defined
