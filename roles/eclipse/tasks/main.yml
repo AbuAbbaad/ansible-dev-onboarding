@@ -23,11 +23,11 @@
       
   - name: Installing Eclipse m2e-egit and Groovy related plugins
     script: scripts/EclipsePlugins_Install.ps1 '{{ ansible_env.USERPROFILE }}\eclipse'
-    when: not defined UnzipEclipse.skipped
+    when: UnzipEclipse.skipped is not defined
   
   - name: Setup Eclipse Custom Workspace Settings
     include: workspace.yml
 
   - name: Create Eclipse desktop shortcut
     script: scripts/CreateEclipseDesktopShortcut.ps1    
-    when: not defined UnzipEclipse.skipped 
+    when: UnzipEclipse.skipped is not defined 
