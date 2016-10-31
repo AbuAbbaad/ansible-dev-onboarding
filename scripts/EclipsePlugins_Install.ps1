@@ -16,10 +16,10 @@ $arguments = @(
 Write-Host "Installing Eclipse m2e-egit and Groovy Related plugins..... "
 
 $process = Start-Process -verb RunAs -FilePath $eclipsePath\eclipsec.exe -ArgumentList $arguments -PassThru -Wait
-if ($process.ExitCode -eq 0){
-    Write-Host "Eclipse m2e-egit and Groovy Related plugins successfully installed"
-}
-else {
-    Write-Host "Installer exit code  $($process.ExitCode) for file $($eclipsePath)"
-}
-Exit $($process.ExitCode)
+#if ($process.ExitCode -eq 0){
+#    Write-Host "Eclipse m2e-egit and Groovy Related plugins successfully installed"
+#}
+#else {
+#    Write-Host "Installer exit code  $($process.ExitCode) for file $($eclipsePath)"
+#}
+#Exit $($process.ExitCode)
