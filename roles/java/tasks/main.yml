@@ -23,8 +23,8 @@
       name: JAVA_HOME
       value: '{{ ansible_env.ProgramFiles }}\jdk{{ JAVA_VERSION }}'
       level: user
-    when: JDKExists.exists != True and InstallJDKStatus.failed != True
+    when: not InstallJDKStatus.skipped
  
   - name: Add JDK 7 to System PATH
     script: scripts/AddPath.ps1 "%JAVA_HOME%\bin" User
-    when: JDKExists.exists != True and InstallJDKStatus.failed != True
+    when: not InstallJDKStatus.skipped
