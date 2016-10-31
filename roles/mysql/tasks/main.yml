@@ -15,7 +15,7 @@
     register: MySQLInstall
     when: MySQLExists.stat.exists != True
 
-  - debug: msg="MySQL Install status {{ available }}"
+  - debug: msg="MySQL Install status {{ MySQLInstall }}"
   
   - name: Configure MySQL Instance
     script: scripts/MySQL_Configure.ps1
