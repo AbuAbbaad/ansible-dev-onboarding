@@ -20,10 +20,10 @@
     win_file:
       path: '{{ ansible_env.USERPROFILE }}\.m2'
       state: directory
-    when: m2SettingsFileStat.stat.exists == True
+    when: m2SettingsFileStat.stat.exists != True
 
   - name: Copy maven settings
     win_copy:
       src: 'files/settings.xml'
       dest: '{{ ansible_env.USERPROFILE }}\.m2\settings.xml'
-    when: m2SettingsFileStat.stat.exists == True 
+    when: m2SettingsFileStat.stat.exists != True 

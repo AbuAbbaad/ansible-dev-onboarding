@@ -1,7 +1,7 @@
 ---
   - name: Check if Git Already Installed
     win_stat:
-      path: '{{ ansible_env.ProgramFiles }}\{{ GIT_NAME }}\{{ GIT_NAME }}.exe'
+      path: '{{ ansible_env.ProgramFiles }}\{{ GIT_NAME }}\git-cmd.exe'
     register: GitInstallStatus
     
   - debug: msg='Git Installation status {{ GitInstallStatus }}'
