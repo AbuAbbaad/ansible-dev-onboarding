@@ -25,4 +25,3 @@
   - name: Install GIT
     script: scripts/Git_Install.ps1 '{{ DOWNLOAD_DIR }}\git\{{ GIT_EXE_FILE }}' '{{ DOWNLOAD_DIR }}\git\git.ini' '{{ DOWNLOAD_DIR }}\git\Git_Install.log'
     when: GitInstallStatus.stat.exists == False
-    debug: msg="Install if Git not already present Git Already Install Status {{ GitInstallStatus.stat.exists }}'
