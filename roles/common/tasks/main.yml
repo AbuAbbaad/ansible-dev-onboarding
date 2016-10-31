@@ -24,6 +24,8 @@
 
   - debug: msg='m2 Setting.xml already exists in {{ansible_env.USERPROFILE}}\.m2 path so doing nothing'
   
+  - debug: msg='m2SettingsFileStat {{ m2SettingsFileStat }}'
+  
   - name: Create m2 directroy if not present
     win_file:
       path: '{{ ansible_env.USERPROFILE }}\.m2'
