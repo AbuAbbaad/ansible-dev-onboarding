@@ -11,7 +11,7 @@
     #when: JDKInstallStatus.exists != True
     
   - name: Install JDK 7
-    script: scripts/JDK_Install.ps1 '{{ DOWNLOAD_DIR }}\java\{{ JAVA_VERSION }}' '{{ ansible_env.ProgramFiles }}\jdk{{ JAVA_VERSION }}' '{{ DOWNLOAD_DIR }}\java\JDK_Install.log'
+    script: scripts/JDK_Install.ps1 '{{ DOWNLOAD_DIR }}\java\{{ JAVA_EXE_FILE }}' '{{ ansible_env.ProgramFiles }}\jdk{{ JAVA_VERSION }}' '{{ DOWNLOAD_DIR }}\java\JDK_Install.log'
     register: InstallJDKStatus
     #when: JDKInstallStatus.exists != True
     
