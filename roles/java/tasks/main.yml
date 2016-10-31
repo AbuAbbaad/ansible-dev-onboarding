@@ -8,12 +8,12 @@
     win_get_url:
       url: '{{ DOWNLOAD_URL }}/{{ JAVA_EXE_FILE }}'
       dest: '{{ DOWNLOAD_DIR }}\java\{{ JAVA_EXE_FILE }}'
-    when: JDKExists.exists != True
+    when: JDKExists.stat.exists != True
     
   - name: Install JDK 7
     script: scripts/JDK_Install.ps1 '{{ DOWNLOAD_DIR }}\java\{{ JAVA_EXE_FILE }}' '{{ ansible_env.ProgramFiles }}\jdk{{ JAVA_VERSION }}' '{{ DOWNLOAD_DIR }}\java\JDK_Install.log'
     register: InstallJDKStatus
-    when: JDKExists.exists != True
+    when: JDKExists.stat.exists != True
     
   - debug: msg='JDK Install status {{ InstallJDKStatus }}'
   
@@ -24,7 +24,7 @@
       value: '{{ ansible_env.ProgramFiles }}\jdk{{ JAVA_VERSION }}'
       level: user
     when: not InstallJDKStatus.skipped
- 
+    
   - name: Add JDK 7 to System PATH
     script: scripts/AddPath.ps1 "%JAVA_HOME%\bin" User
     when: not InstallJDKStatus.skipped
