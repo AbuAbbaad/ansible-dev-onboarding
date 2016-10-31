@@ -18,7 +18,7 @@
       path: '{{ ansible_env.ProgramFiles }}\{{ GIT_NAME }}\{{ GIT_NAME }}.exe'
       register: GitInstallStatus
    
-  - debug: msg='Git Installation status: {{ GitInstallStatus }}'
+  - debug: msg='Git Installation status {{ GitInstallStatus }}'
       
   - name: Install GIT
     script: scripts/Git_Install.ps1 '{{ DOWNLOAD_DIR }}\git\{{ GIT_EXE_FILE }}' '{{ DOWNLOAD_DIR }}\git\git.ini' '{{ DOWNLOAD_DIR }}\git\Git_Install.log'
