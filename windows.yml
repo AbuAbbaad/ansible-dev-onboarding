@@ -8,5 +8,5 @@
     - git
     - java
     #- tomcat
-    #- mysql
+    - mysql
     #- eclipse

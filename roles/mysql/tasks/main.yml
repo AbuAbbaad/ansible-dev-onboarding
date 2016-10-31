@@ -2,26 +2,31 @@
   - name: Check if MySQL already Installed
     win_stat:
       path: '{{ ansible_env.ProgramFiles }}\MySQL\MySQL Server 5.5\bin\mysqld.exe'
-    register: MySQLInstallStatus
-  
+    register: MySQLExists
+    
   - name: Download MySQL
     win_get_url:
       url: '{{ DOWNLOAD_URL }}/{{ MYSQL_MSI_FILE }}'
       dest: '{{ DOWNLOAD_DIR }}\mysql\{{ MYSQL_MSI_FILE }}'
-
+    when: MySQLExists.stat.exists != True
+    
   - name: Install MySQL 5
     script: scripts/MySQL_Install.ps1 '{{ DOWNLOAD_DIR }}\mysql\{{ MYSQL_MSI_FILE }}' '{{ DOWNLOAD_DIR }}\mysql\MySQL_Install.log'
-    register: available
+    register: MySQLInstall
+    when: MySQLExists.stat.exists != True
 
   - debug: msg="MySQL Install status {{ available }}"
   
   - name: Configure MySQL Instance
     script: scripts/MySQL_Configure.ps1
     ignore_errors: True
+    when: not MySQLInstall.skipped
     
   - name: Add MySQL to System PATH
     script: scripts/AddPath.ps1 "%ProgramFiles%\MySQL\MySQL Server 5.5\bin" User
+    when: not MySQLInstall.skipped
     
   - name: Create Sample PETCLINIC DB
     raw: cmd.exe /c mysql --user=root --password=mysql -e "CREATE DATABASE PETCLINIC;"
     ignore_errors: True
+    when: not MySQLInstall.skipped
