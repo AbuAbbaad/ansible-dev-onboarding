@@ -15,7 +15,8 @@ $arguments = @(
 
 Write-Host "Installing Eclipse m2e-egit and Groovy Related plugins..... "
 
-$process = Start-Process -verb RunAs -FilePath $eclipsePath\eclipsec.exe -ArgumentList $arguments -PassThru -Wait
+#$process = Start-Process -verb RunAs -FilePath $eclipsePath\eclipsec.exe -ArgumentList $arguments -PassThru -Wait
+$process = Start-Process -FilePath $eclipsePath\eclipsec.exe -ArgumentList $arguments -PassThru -Wait
 if ($process.ExitCode -eq 0){
     Write-Host "Eclipse m2e-egit and Groovy Related plugins successfully installed"
 }
