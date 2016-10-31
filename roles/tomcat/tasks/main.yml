@@ -1,7 +1,7 @@
 ---
   - name: Check if Apache Tomcat already present
     win_stat:
-      path: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}\bin\tomcat7.exe'
+      path: '{{ PROJECT_ROOT }}\apache-tomcat-{{ TOMCAT_VERSION }}\bin\tomcat7.exe'
     register: ApacheInstallExists
     
   - name: Download Tomcat7 Server
@@ -14,8 +14,8 @@
   - name: Unzip Tomcat
     win_unzip:  
       src: '{{ DOWNLOAD_DIR }}\tomcat\{{ TOMCAT_ZIP_FILE }}'
-      dest: '{{ ansible_env.USERPROFILE }}'
-      creates: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}'
+      dest: '{{ PROJECT_ROOT }}'
+      creates: '{{ PROJECT_ROOT }}\apache-tomcat-{{ TOMCAT_VERSION }}'
     when: ApacheInstallExists.stat.exists != True
     register: UnzipTomcat
 
@@ -23,7 +23,7 @@
     win_environment:
        state: present
        name: CATALINA_HOME
-       value: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}'
+       value: '{{ PROJECT_ROOT }}\apache-tomcat-{{ TOMCAT_VERSION }}'
        level: user
     when: UnzipTomcat.skipped is not defined
 

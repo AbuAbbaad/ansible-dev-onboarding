@@ -1,7 +1,7 @@
 ---
   - name: Check if Eclipse already present
     win_stat:
-      path: '{{ ansible_env.USERPROFILE }}\eclipse\eclipse.exe'
+      path: '{{ PROJECT_ROOT }}\eclipse\eclipse.exe'
     register: EclipseInstallExists
     
   - name: Download Eclipse Java EE IDE
@@ -14,20 +14,20 @@
   - name: Unzip Eclipse
     win_unzip:  
       src: '{{ DOWNLOAD_DIR }}\eclipse\{{ ECLIPSE_VERSION }}'
-      dest: '{{ ansible_env.USERPROFILE }}'
-      creates: '{{ ansible_env.USERPROFILE }}\eclipse'
+      dest: '{{ PROJECT_ROOT }}'
+      creates: '{{ PROJECT_ROOT }}\eclipse'
     register: UnzipEclipse
     when: EclipseInstallExists.stat.exists != True
     
   - debug: msg:'Eclipse unzip status {{ UnzipEclipse }}'
       
   - name: Installing Eclipse m2e-egit and Groovy related plugins
-    script: scripts/EclipsePlugins_Install.ps1 '{{ ansible_env.USERPROFILE }}\eclipse'
+    script: scripts/EclipsePlugins_Install.ps1 '{{ PROJECT_ROOT }}\eclipse'
     when: UnzipEclipse.skipped is not defined
   
   - name: Setup Eclipse Custom Workspace Settings
     include: workspace.yml
 
   - name: Create Eclipse desktop shortcut
-    script: scripts/CreateEclipseDesktopShortcut.ps1    
+    script: scripts/CreateEclipseDesktopShortcut.ps1 '{{ PROJECT_ROOT }}\eclipse\eclipse.exe'
     when: UnzipEclipse.skipped is not defined 

@@ -1,7 +1,7 @@
 ---
   - name: Check if Workspace already exists
     win_stat:
-      path: '{{ ansible_env.USERPROFILE }}\workspace'
+      path: '{{ PROJECT_ROOT }}\workspace'
     register: WorkspaceAlreadyExists
     
   - name: Download Eclipse workspace Project settings
@@ -15,6 +15,6 @@
   - name: Unzip Eclipse workspace setttings to USER workspace
     win_unzip:
       src: '{{ DOWNLOAD_DIR }}\eclipse\{{ WORKSPACE_FILE }}'
-      dest: '{{ ansible_env.USERPROFILE }}'
-      creates: '{{ ansible_env.USERPROFILE }}\workspace'
+      dest: '{{ PROJECT_ROOT }}'
+      creates: '{{ PROJECT_ROOT }}\workspace'
     when: UnzipWorkspace.skipped is not defined

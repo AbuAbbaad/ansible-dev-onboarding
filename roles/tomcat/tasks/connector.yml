@@ -2,7 +2,7 @@
   - name: Get JDBC Drivers for Tomcat 7
     win_get_url:
       url: '{{ DOWNLOAD_URL }}/{{ TOMCAT_MYSQL_CONNECTOR }}'
-      dest: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}\lib\{{ TOMCAT_MYSQL_CONNECTOR }}'
+      dest: '{{ PROJECT_ROOT }}\apache-tomcat-{{ TOMCAT_VERSION }}\lib\{{ TOMCAT_MYSQL_CONNECTOR }}'
     when: UnzipTomcat.skipped is not defined
 
   - name: Set CLASSPATH to MySQL JConnector

@@ -10,6 +10,7 @@
       - '{{ DOWNLOAD_DIR }}\tomcat'
       - '{{ DOWNLOAD_DIR }}\mysql'
       - '{{ DOWNLOAD_DIR }}\java'
+      - '{{ PROJECT_ROOT }}'
       
   - name: Check if m2 already exists
     win_stat:
