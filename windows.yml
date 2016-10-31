@@ -7,6 +7,6 @@
     - common
     - git
     - java
-    #- tomcat
+    - tomcat
     - mysql
-    #- eclipse
+    - eclipse

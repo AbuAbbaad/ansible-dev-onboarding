@@ -1,21 +1,31 @@
 ---
-  - name: Install Tomcat Server
+  - name: Check if Apache Tomcat already present
+    win_stat:
+      path: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}\bin\tomcat7.exe'
+    register: ApacheInstallExists
+    
+  - name: Download Tomcat7 Server
     win_get_url: 
-      url: "{{ DOWNLOAD_URL }}/{{ TOMCAT_VERSION}}"
-      dest: "{{ DOWNLOAD_DIR }}\\tomcat\\{{ TOMCAT_VERSION }}"
+      url: '{{ DOWNLOAD_URL }}/{{ TOMCAT_ZIP_FILE}}'
+      dest: '{{ DOWNLOAD_DIR }}\tomcat\{{ TOMCAT_ZIP_FILE }}'
       force: no
+    when: ApacheInstallExists.stat.exists != True
 
   - name: Unzip Tomcat
     win_unzip:  
-      src: "{{ DOWNLOAD_DIR }}\\tomcat\\{{ TOMCAT_VERSION }}"
-      dest: "{{ ansible_env.USERPROFILE }}"
-      creates: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-7.0.62"
+      src: '{{ DOWNLOAD_DIR }}\tomcat\{{ TOMCAT_ZIP_FILE }}'
+      dest: '{{ ansible_env.USERPROFILE }}'
+      creates: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}'
+    when: ApacheInstallExists.stat.exists != True
+    register: UnzipTomcat
 
   - name: set environment
     win_environment:
        state: present
        name: CATALINA_HOME
-       value: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-7.0.62"
+       value: '{{ ansible_env.USERPROFILE }}\apache-tomcat-{{ TOMCAT_VERSION }}'
        level: user
+    when: not UnzipTomcat.skipped
 
   - include: connector.yml
+    when: not UnzipTomcat.skipped

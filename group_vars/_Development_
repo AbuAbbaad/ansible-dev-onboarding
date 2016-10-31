@@ -1,4 +1,6 @@
 ---
   DOWNLOAD_URL: 'C:\Users\Amina\Downloads'
+  PROJECT_NAME: 'PetClinic'
   DOWNLOAD_DIR: '{{ ansible_env.USERPROFILE }}\Software\tools\downloads'
   INSTALL_DIR: '{{ ansible_env.USERPROFILE }}\Software\tools\\install'
+  PROJECT_ROOT: '{{ ansible_env.USERPROFILE}}\{{ PROJECT_NAME}}'
